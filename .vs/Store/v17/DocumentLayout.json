@@ -1,0 +1,73 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\andre\\Proyectos\\.Net\\Store\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{03274CEE-DC0E-4FE9-B391-A678C3959B9B}|Store\\Store.csproj|c:\\users\\andre\\proyectos\\.net\\store\\store\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03274CEE-DC0E-4FE9-B391-A678C3959B9B}|Store\\Store.csproj|solutionrelative:store\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03274CEE-DC0E-4FE9-B391-A678C3959B9B}|Store\\Store.csproj|c:\\users\\andre\\proyectos\\.net\\store\\store\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03274CEE-DC0E-4FE9-B391-A678C3959B9B}|Store\\Store.csproj|solutionrelative:store\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03274CEE-DC0E-4FE9-B391-A678C3959B9B}|Store\\Store.csproj|c:\\users\\andre\\proyectos\\.net\\store\\store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03274CEE-DC0E-4FE9-B391-A678C3959B9B}|Store\\Store.csproj|solutionrelative:store\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 545,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\Proyectos\\.Net\\Store\\Store\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Store\\Controllers\\ProductsController.cs",
+              "ToolTip": "C:\\Users\\andre\\Proyectos\\.Net\\Store\\Store\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "Store\\Controllers\\ProductsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T21:05:55.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\Proyectos\\.Net\\Store\\Store\\Entities\\Product.cs",
+              "RelativeDocumentMoniker": "Store\\Entities\\Product.cs",
+              "ToolTip": "C:\\Users\\andre\\Proyectos\\.Net\\Store\\Store\\Entities\\Product.cs",
+              "RelativeToolTip": "Store\\Entities\\Product.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T21:05:47.85Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\andre\\Proyectos\\.Net\\Store\\Store\\Program.cs",
+              "RelativeDocumentMoniker": "Store\\Program.cs",
+              "ToolTip": "C:\\Users\\andre\\Proyectos\\.Net\\Store\\Store\\Program.cs",
+              "RelativeToolTip": "Store\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-11T20:53:35.882Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
