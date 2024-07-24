@@ -1,36 +1,54 @@
+import { Container, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import Header from './Header';
+import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import Catalog from "../../features/catalog/Catalog";
-import {Container, createTheme, CssBaseline, ThemeProvider} from "@mui/material";
-import Header from "./Header";
-import {useState} from "react";
+import { getCookie } from '../util/util';
+import LoadingComponent from './LoadingComponent';
+import { useAppDispatch } from '../store/configureStore';
+import { setBasket } from '../../features/basket/basketSlice';
 
 function App() {
-    const  [darkMode,setDarkMode] = useState(false);
-    const palleteType = darkMode ? 'dark': 'light'
+    const dispatch = useAppDispatch();
+    const [loading, setLoading] = useState(true);
 
+    useEffect(() => {
+        const buyerId = getCookie('buyerId');
+        if (buyerId) {
+            agent.Basket.get()
+                .then(basket => dispatch(setBasket(basket)))
+                .catch(error => console.log(error))
+                .finally(() => setLoading(false));
+        } else {
+            setLoading(false);
+        }
+    }, [dispatch])
+
+    const [darkMode, setDarkMode] = useState(false);
+    const palleteType = darkMode ? 'dark' : 'light';
     const theme = createTheme({
         palette: {
             mode: palleteType,
             background: {
-                default: palleteType=== 'light'? '#eaeaea' : '#121212'
+                default: (palleteType === 'light') ? '#eaeaea' : '#121212'
             }
-
         }
     })
-
-    function handleThemeChange (){
+    function handleThemeChange() {
         setDarkMode(!darkMode);
     }
-        return (
-            <ThemeProvider theme={theme}>
-                <CssBaseline/>
-                <Header darkMode={darkMode} handleThemeChange={handleThemeChange}/>
-                <Container>
-                    <Catalog/>
-                </Container>
-            </ThemeProvider>
-
-        );
-    }
-
-    export default App
+    if (loading) return <LoadingComponent message='Initiasing app...' />
+    return (
+        <ThemeProvider theme={theme}>
+            <ToastContainer position='bottom-right' hideProgressBar theme='colored'  />
+            <CssBaseline />
+            <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
+            <Container>
+                <Outlet />
+            </Container>
+        </ThemeProvider>
+    );
+}
+export default App
