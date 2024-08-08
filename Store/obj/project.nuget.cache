@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ZFMMHcFzUPA=",
+  "dgSpecHash": "1IY04J3CoXw=",
   "success": true,
   "projectFilePath": "C:\\Users\\andre\\Proyectos\\.Net\\Store\\Store\\Store.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\andre\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\andre\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",

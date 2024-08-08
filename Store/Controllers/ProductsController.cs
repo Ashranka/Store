@@ -1,29 +1,31 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Store.Data;
+using Store.DTOs;
 using Store.Entities;
 using Store.Extensions;
 using Store.RequestHelpers;
 using System.Text.Json;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.OpenApi;
 
 namespace Store.Controllers
 {
     public class ProductsController : BaseApiController
     {
         private readonly StoreContext _context;
+        private readonly IMapper _mapper;
 
-        public ProductsController(StoreContext context)
+        public ProductsController(StoreContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
 
         [HttpGet]
 
-        public async Task<ActionResult<PageList<Product>>> GetProductsAsync([FromQuery]ProductParams productParams)
+        public async Task<ActionResult<PageList<Product>>> GetProductsAsync([FromQuery] ProductParams productParams)
         {
             // Obtiene una consulta IQueryable de la tabla Products
             var query = _context.Products
@@ -43,7 +45,7 @@ namespace Store.Controllers
         }
 
 
-        [HttpGet("{id:int}")] // api/products/3 ej
+        [HttpGet("{id:int}", Name = "GetProduct")] // api/products/3 ej
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);
@@ -62,11 +64,62 @@ namespace Store.Controllers
 
             return Ok(new
             {
-                brands, types
+                brands,
+                types
             });
         }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<ActionResult<Product>> CreateProduct([FromBody] CreateProductDto productDto)
+        {
+
+            var product = _mapper.Map<Product>(productDto);
+
+            _context.Products.Add(product);
+            var result = await _context.SaveChangesAsync() > 0;
+
+            if (result) return CreatedAtRoute("GetProduct", new { Id = product.Id }, product);
+
+            return BadRequest(new ProblemDetails { Title = "Problema creando un producto" });
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut]
+        public async Task<ActionResult<Product>> UpdateProduct([FromBody] UpdateproductDto UpdateproductDto)
+        {
+            //Primero debemos ver si existe el producto
+            var product = await _context.Products.FindAsync(UpdateproductDto.Id);
+
+            if (product == null) return NotFound();
+
+            _mapper.Map(UpdateproductDto, product);
+
+            var result = await _context.SaveChangesAsync() > 0;
+            if (result) return NoContent();
+
+            return BadRequest(new ProblemDetails { Title = "Problema Actualizando el producto" });
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpDelete]
+
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null) return NotFound();
+
+            _context.Products.Remove(product);
+            var result = await _context.SaveChangesAsync() > 0;
+
+            if (result) return Ok();
+
+            return BadRequest(new ProblemDetails { Title = "No se Pudo Actualizar el producto" });
+
+        }
+
+
+
+
 
     }
-
-
 }

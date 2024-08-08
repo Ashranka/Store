@@ -23,7 +23,7 @@ namespace Store.Controllers
         {
             //La consulta la haremos a traves de la cookie que se almacenan en el ordenador
             //del usuario
-            var basket = await RetrieveBasket();
+            var basket = await RetrieveBasket(GetBuyerId());
 
             if (basket == null)
             {
@@ -42,7 +42,7 @@ namespace Store.Controllers
         {
 
             //Get Basket
-            var basket = await RetrieveBasket();
+            var basket = await RetrieveBasket(GetBuyerId());
             //create basket
             if (basket == null)
             {
@@ -70,11 +70,16 @@ namespace Store.Controllers
         }
 
 
+        private string GetBuyerId()
+        {
+            return User.Identity?.Name ?? Request.Cookies["buyerId"];
+        }
+
         [HttpDelete]
         public async Task<ActionResult> RemoveBasketItem (int productId, int quantity)
         {
             //Get Baket
-            var basket = await RetrieveBasket();
+            var basket = await RetrieveBasket(GetBuyerId());
             if (basket == null) return NotFound();
 
             basket.RemoveItem(productId, quantity);
@@ -87,7 +92,7 @@ namespace Store.Controllers
         }
            
 
-        private async Task<Basket> RetrieveBasket()
+        private async Task<Basket> RetrieveBasket(string buyerId)
         {
             return await _context.Baskets
                          .Include(i => i.Items)
