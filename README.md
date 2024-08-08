@@ -26,7 +26,7 @@ Esta es una aplicación de tienda en línea que permite a los usuarios crear pro
 
 ### Backend
 
-El backend está ubicado en la carpeta `Server` y contiene los siguientes componentes principales:
+El backend está ubicado en la carpeta `Store` y contiene los siguientes componentes principales:
 
 - **Controllers**: Controladores de API para manejar las solicitudes HTTP.
 - **Data**: Contexto de base de datos y configuraciones de Entity Framework.
@@ -37,7 +37,7 @@ El backend está ubicado en la carpeta `Server` y contiene los siguientes compon
 
 ### Frontend
 
-El frontend está ubicado en la carpeta `ClientApp` y contiene los siguientes componentes principales:
+El frontend está ubicado en la carpeta `Client` y contiene los siguientes componentes principales:
 
 - **src/components**: Componentes de React.
 - **src/pages**: Páginas de la aplicación.
